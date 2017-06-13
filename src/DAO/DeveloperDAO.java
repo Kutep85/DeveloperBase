@@ -29,7 +29,7 @@ public class DeveloperDAO {
 	
 	public Developer getById(int id) throws IOException{
 		if (developers.isEmpty())
-			getAllDevelopers();
+			develoers = getAllDevelopers();
 		for (Developer dev : developers){
 			if(dev.getId() == id)
 			return dev;
