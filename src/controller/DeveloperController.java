@@ -9,13 +9,13 @@ import model.Developer;
 
 public class DeveloperController {
 	
-	private DeveloperDAO developerDAO;
-	
+
 	public DeveloperController() {
 
 	}
 	
 	public String developerById(int id) throws IOException {
+		DeveloperDAO developerDAO;
 		developerDAO = new DeveloperDAO();
 		if (developerDAO.getById(id) == null)
 			return null;
@@ -23,6 +23,7 @@ public class DeveloperController {
 	}
 	
 	public void newDeveloper() throws IOException {
+		DeveloperDAO developerDAO;
 		developerDAO = new DeveloperDAO();
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 		Developer developer = new Developer();
@@ -42,11 +43,13 @@ public class DeveloperController {
 	}
 	
 	public void newDeveloper(String firstName, String lastName, String specialty, int experience, int salary) throws IOException {
+		DeveloperDAO developerDAO = new DeveloperDAO();
 		Developer developer = new Developer (firstName, lastName, specialty, experience, salary);
 		developerDAO.saveDeveloper(developer);
 	}
 	
 	public void editDeveloper(int id) throws IOException {
+		DeveloperDAO developerDAO;
 		developerDAO = new DeveloperDAO();
 		Developer developer = developerDAO.getById(id);
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
@@ -105,11 +108,13 @@ public class DeveloperController {
 	}
 	
 	public boolean deleteDeveloper(int id) throws IOException {
+		DeveloperDAO developerDAO;
 		developerDAO = new DeveloperDAO();
 		return developerDAO.delete(id);
 	}
 	
 	public String printDevs() {
+		DeveloperDAO developerDAO;
 		developerDAO = new DeveloperDAO();
 		return developerDAO.toString();
 	}

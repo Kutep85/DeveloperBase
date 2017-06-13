@@ -19,7 +19,7 @@ public class DeveloperDAO {
 		developers = new TreeSet<>();
 		try {
 		if (file.exists())
-			getAllDevelopers();
+			developers = getAllDevelopers();
 		}
 		catch (NumberFormatException a) {
 		}
@@ -37,11 +37,11 @@ public class DeveloperDAO {
 		return null;
 	}
 	
-	public void getAllDevelopers() throws NumberFormatException, IOException {
+	public TreeSet<Developer> getAllDevelopers() throws NumberFormatException, IOException {
 		Developer developer;
 		BufferedReader reader = new BufferedReader(new FileReader(file));
 		if (file.length() == 0)
-			return;
+			return null;
 		String developerStr = "";
 		while ((developerStr = reader.readLine()) != null) {		
 			String[] developerDim = developerStr.split(", ");
@@ -57,6 +57,7 @@ public class DeveloperDAO {
 			developerStr = "";
 		}
 		reader.close();
+		return developers;
 //		System.out.println(this.toString());
 	}
 	
